@@ -68,7 +68,7 @@
       </div>
       <nav class="flex flex-col flex-grow">
         {#each [
-            { name: '', text: 'POS', icon: 'dollar-sign' },
+            { name: 'pos', text: 'POS', icon: 'dollar-sign' },
             { name: 'pricecheck', text: 'Price Check', icon: 'search' }
         ] as route}
             <button on:click={() => window.location.href = `/user/${route.name}`} class="sidebar-button">

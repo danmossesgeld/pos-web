@@ -37,9 +37,9 @@
 
                 if (userData.type) {
                     if (userData.type === 'admin') {
-                        goto('/admin');
+                        goto('/admin/inventory');
                     } else if (userData.type === 'user') {
-                        goto('/user');
+                        goto('/user/pos');
                     }
                 } else {
                     await signOut(auth);

@@ -1,1 +1,0 @@
-<h1>CASHIER FORM</h1>

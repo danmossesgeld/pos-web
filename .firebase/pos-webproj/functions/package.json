@@ -1,11 +1,14 @@
 {
-  "name": "web-pos",
+  "name": "pos-system",
   "version": "0.0.1",
   "private": true,
   "type": "module",
   "dependencies": {
+    "@sveltejs/adapter-static": "^3.0.8",
+    "@zxing/library": "^0.21.3",
     "feather-icons": "^4.29.2",
     "firebase": "^10.13.1",
+    "quagga": "^0.6.16",
     "svelte-preprocess": "^6.0.2",
     "@sveltejs/kit": "^2.5.27",
     "firebase-frameworks": "^0.11.0",

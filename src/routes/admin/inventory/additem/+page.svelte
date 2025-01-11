@@ -1,16 +1,63 @@
 <script lang="ts">
   import { getFirestore, collection, addDoc } from 'firebase/firestore';
-  import feather from 'feather-icons'; // Import Feather icons
-  import { onMount } from 'svelte'; // Ensure icons load correctly after mount
+  import feather from 'feather-icons';
+  import { onMount } from 'svelte';
+  import Quagga from '@ericblade/quagga2'; // Import Quagga for barcode scanning
 
   // Variables to store new item details
   let itemName = '', itemQuantity = '', itemPrice = '', pID = '', itemCost = '';
   let isLoading = false;
+  let isScannerActive = false; // Flag to toggle scanner visibility
+  let scannerInitialized = false; // Flag to check if scanner is initialized
 
   // Ensure feather icons are replaced after component is mounted
   onMount(() => {
     feather.replace();
   });
+
+  // Initialize the scanner
+  const startScanner = () => {
+    if (!scannerInitialized) {
+      // Initialize the scanner only once
+      isScannerActive = true; // Show the scanner UI
+      Quagga.init(
+        {
+          inputStream: {
+            type: 'LiveStream',
+            target: document.querySelector('#scanner-container') || undefined,
+            constraints: {
+              facingMode: 'environment', // Use the back camera
+            },
+          },
+          decoder: {
+            readers: ['ean_reader'], // Set the barcode format
+          },
+        },
+        (err: any) => {
+          if (err) {
+            console.error('Quagga initialization failed:', err);
+            alert('Failed to initialize the scanner');
+            return;
+          }
+          Quagga.start(); // Start the scanner
+          scannerInitialized = true; // Set flag to true after initialization
+        }
+      );
+
+      // When a barcode is detected, populate the pID field and close the scanner
+      Quagga.onDetected((data: { codeResult: { code: string | null } }) => {
+        const scannedBarcode = data.codeResult.code;
+        if (scannedBarcode) {
+          pID = scannedBarcode; // Set the scanned barcode to pID
+          isScannerActive = false; // Hide the scanner
+          Quagga.stop(); // Stop the scanner
+        }
+      });
+    } else {
+      // If scanner is already initialized, just toggle visibility
+      isScannerActive = !isScannerActive;
+    }
+  };
 
   // Function to handle form submission and add new item to Firestore
   const handleSubmit = async () => {
@@ -64,6 +111,22 @@
           required
         />
       </div>
+
+      <!-- Button to trigger barcode scanner -->
+      <button
+        type="button"
+        class="w-full p-2 mt-2 bg-blue-500 text-white rounded-md focus:outline-none hover:bg-blue-600"
+        on:click={startScanner}
+      >
+        Open Camera Barcode Scanner
+      </button>
+
+      {#if isScannerActive}
+        <!-- Scanner Container -->
+        <div id="scanner-container" class="scanner-container mt-4" style="height: 300px;">
+          <!-- Video feed from the scanner -->
+        </div>
+      {/if}
 
       <!-- Item name input group -->
       <div class="flex items-center">
@@ -132,3 +195,11 @@
     </form>
   </div>
 </div>
+
+<style>
+  .scanner-container {
+    width: 100%;
+    background-color: black;
+    border-radius: 8px;
+  }
+</style>

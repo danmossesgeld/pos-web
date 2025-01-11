@@ -8,52 +8,54 @@
       "_internal.js"
     ]
   },
-  "_equality.js": {
-    "file": "chunks/equality.js",
-    "name": "equality"
-  },
-  "_escaping.js": {
-    "file": "chunks/escaping.js",
-    "name": "escaping"
+  "_client.js": {
+    "file": "chunks/client.js",
+    "name": "client",
+    "imports": [
+      "_exports.js",
+      "_ssr2.js"
+    ]
   },
   "_exports.js": {
     "file": "chunks/exports.js",
-    "name": "exports",
-    "imports": [
-      "_equality.js"
-    ]
+    "name": "exports"
   },
-  "_index.js": {
-    "file": "chunks/index.js",
-    "name": "index"
+  "_firebase.client.js": {
+    "file": "chunks/firebase.client.js",
+    "name": "firebase.client"
   },
   "_internal.js": {
     "file": "chunks/internal.js",
     "name": "internal",
     "imports": [
-      "_equality.js",
-      "_index.js"
+      "_ssr.js",
+      "_ssr2.js"
     ]
   },
-  "node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte": {
+  "_ssr.js": {
+    "file": "chunks/ssr.js",
+    "name": "ssr"
+  },
+  "_ssr2.js": {
+    "file": "chunks/ssr2.js",
+    "name": "ssr"
+  },
+  "_stores.js": {
+    "file": "chunks/stores.js",
+    "name": "stores",
+    "imports": [
+      "_ssr.js",
+      "_client.js"
+    ]
+  },
+  "node_modules/@sveltejs/kit/src/runtime/components/svelte-4/error.svelte": {
     "file": "entries/fallbacks/error.svelte.js",
     "name": "entries/fallbacks/error.svelte",
-    "src": "node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte",
+    "src": "node_modules/@sveltejs/kit/src/runtime/components/svelte-4/error.svelte",
     "isEntry": true,
     "imports": [
-      "_escaping.js",
-      "_index.js",
-      "_equality.js",
-      "_exports.js"
-    ]
-  },
-  "node_modules/@sveltejs/kit/src/runtime/components/svelte-5/layout.svelte": {
-    "file": "entries/fallbacks/layout.svelte.js",
-    "name": "entries/fallbacks/layout.svelte",
-    "src": "node_modules/@sveltejs/kit/src/runtime/components/svelte-5/layout.svelte",
-    "isEntry": true,
-    "imports": [
-      "_index.js"
+      "_ssr.js",
+      "_stores.js"
     ]
   },
   "node_modules/@sveltejs/kit/src/runtime/server/index.js": {
@@ -63,7 +65,22 @@
     "isEntry": true,
     "imports": [
       "_internal.js",
-      "_exports.js"
+      "_exports.js",
+      "_ssr.js"
+    ]
+  },
+  "src/routes/+layout.svelte": {
+    "file": "entries/pages/_layout.svelte.js",
+    "name": "entries/pages/_layout.svelte",
+    "src": "src/routes/+layout.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_client.js",
+      "_firebase.client.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_layout.PMiJmjED.css"
     ]
   },
   "src/routes/+page.svelte": {
@@ -72,8 +89,178 @@
     "src": "src/routes/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_escaping.js",
-      "_index.js"
+      "_ssr.js"
+    ]
+  },
+  "src/routes/admin/+layout.svelte": {
+    "file": "entries/pages/admin/_layout.svelte.js",
+    "name": "entries/pages/admin/_layout.svelte",
+    "src": "src/routes/admin/+layout.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_firebase.client.js",
+      "_client.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_layout.C2AeOOZv.css"
+    ]
+  },
+  "src/routes/admin/+page.svelte": {
+    "file": "entries/pages/admin/_page.svelte.js",
+    "name": "entries/pages/admin/_page.svelte",
+    "src": "src/routes/admin/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js"
+    ]
+  },
+  "src/routes/admin/inventory/+page.svelte": {
+    "file": "entries/pages/admin/inventory/_page.svelte.js",
+    "name": "entries/pages/admin/inventory/_page.svelte",
+    "src": "src/routes/admin/inventory/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_client.js"
+    ]
+  },
+  "src/routes/admin/inventory/additem/+page.svelte": {
+    "file": "entries/pages/admin/inventory/additem/_page.svelte.js",
+    "name": "entries/pages/admin/inventory/additem/_page.svelte",
+    "src": "src/routes/admin/inventory/additem/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.CfaG1Bdx.css"
+    ]
+  },
+  "src/routes/admin/inventory/updateitem/+page.svelte": {
+    "file": "entries/pages/admin/inventory/updateitem/_page.svelte.js",
+    "name": "entries/pages/admin/inventory/updateitem/_page.svelte",
+    "src": "src/routes/admin/inventory/updateitem/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_client.js"
+    ]
+  },
+  "src/routes/admin/itemlist/+page.svelte": {
+    "file": "entries/pages/admin/itemlist/_page.svelte.js",
+    "name": "entries/pages/admin/itemlist/_page.svelte",
+    "src": "src/routes/admin/itemlist/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js"
+    ]
+  },
+  "src/routes/admin/transactions/+page.svelte": {
+    "file": "entries/pages/admin/transactions/_page.svelte.js",
+    "name": "entries/pages/admin/transactions/_page.svelte",
+    "src": "src/routes/admin/transactions/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_client.js"
+    ]
+  },
+  "src/routes/admin/transactions/transactioninfo/+page.svelte": {
+    "file": "entries/pages/admin/transactions/transactioninfo/_page.svelte.js",
+    "name": "entries/pages/admin/transactions/transactioninfo/_page.svelte",
+    "src": "src/routes/admin/transactions/transactioninfo/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_stores.js",
+      "_client.js"
+    ]
+  },
+  "src/routes/admin/users/+page.svelte": {
+    "file": "entries/pages/admin/users/_page.svelte.js",
+    "name": "entries/pages/admin/users/_page.svelte",
+    "src": "src/routes/admin/users/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.DVD5wmE5.css"
+    ]
+  },
+  "src/routes/login/+page.svelte": {
+    "file": "entries/pages/login/_page.svelte.js",
+    "name": "entries/pages/login/_page.svelte",
+    "src": "src/routes/login/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_firebase.client.js",
+      "_client.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.DMmPCCx0.css"
+    ]
+  },
+  "src/routes/register/+page.svelte": {
+    "file": "entries/pages/register/_page.svelte.js",
+    "name": "entries/pages/register/_page.svelte",
+    "src": "src/routes/register/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_firebase.client.js",
+      "_client.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.D15ATgMr.css"
+    ]
+  },
+  "src/routes/user/+layout.svelte": {
+    "file": "entries/pages/user/_layout.svelte.js",
+    "name": "entries/pages/user/_layout.svelte",
+    "src": "src/routes/user/+layout.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_firebase.client.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_layout.DLeHsPtL.css"
+    ]
+  },
+  "src/routes/user/pos/+page.svelte": {
+    "file": "entries/pages/user/pos/_page.svelte.js",
+    "name": "entries/pages/user/pos/_page.svelte",
+    "src": "src/routes/user/pos/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_firebase.client.js"
+    ]
+  },
+  "src/routes/user/pos/scanner/+page.svelte": {
+    "file": "entries/pages/user/pos/scanner/_page.svelte.js",
+    "name": "entries/pages/user/pos/scanner/_page.svelte",
+    "src": "src/routes/user/pos/scanner/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js"
+    ]
+  },
+  "src/routes/user/pricecheck/+page.svelte": {
+    "file": "entries/pages/user/pricecheck/_page.svelte.js",
+    "name": "entries/pages/user/pricecheck/_page.svelte",
+    "src": "src/routes/user/pricecheck/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_firebase.client.js",
+      "_client.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.BBWWnp2G.css"
     ]
   }
 }

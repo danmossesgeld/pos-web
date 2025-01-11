@@ -44,7 +44,7 @@
   
             // Redirect based on user type if on the login page
             if (currentPath === '/login') {
-              userType === 'admin' ? goto('/admin') : goto('/user');
+              userType === 'admin' ? goto('/admin') : goto('/user/pos');
             }
           } else {
             // Log an error if no user record is found in Firestore
