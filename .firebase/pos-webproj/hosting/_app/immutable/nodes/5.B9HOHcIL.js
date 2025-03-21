@@ -1,1 +1,0 @@
-import{s as o,n as a}from"../chunks/scheduler.BELo7BN7.js";import{S as r,i,t as c,b as m,g as l,d as p}from"../chunks/index.BanRfVMS.js";function f(s){let t;return{c(){t=c("MAIN PAGE")},l(e){t=m(e,"MAIN PAGE")},m(e,n){l(e,t,n)},p:a,i:a,o:a,d(e){e&&p(t)}}}class x extends r{constructor(t){super(),i(this,t,null,f,o,{})}}export{x as component};
