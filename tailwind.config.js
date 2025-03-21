@@ -1,11 +1,9 @@
-// tailwind.config.js
-module.exports = {
-  content: [
-    './src/**/*.{html,js,svelte,ts}', // Adjust based on your file structure
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
+/** @type {import('tailwindcss').Config} */
+export default {
+	content: ['./src/**/*.{html,js,svelte,ts}'],
+	theme: {
+		extend: {}
+	},
+	plugins: []
 };
 
